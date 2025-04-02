@@ -1,0 +1,59 @@
+<h1 class="page-title">Mission Details</h1>
+<div class="navigation">
+  <button routerLink="/" class="back-button">
+    Back
+  </button>
+</div>
+
+<div class="content-container" *ngIf="details">
+  <div class="launch-card">
+    <div class="mission-header">
+      <div class="patch-container" *ngIf="details.links?.mission_patch">
+        <img [src]="details.links.mission_patch" 
+             alt="Mission Patch" 
+             class="mission-patch">
+      </div>
+      
+      <div class="mission-info">
+        <div class="mission-badge">Flight #{{ details.flight_number }}</div>
+        <h2>{{ details.mission_name }}</h2>
+        <div>{{ details.launch_year }}</div>
+      </div>
+    </div>
+
+    <div class="details-section">
+      <h3>Rocket Details</h3>
+      <p><strong>Name:</strong> {{ details.rocket?.rocket_name }}</p>
+      <p><strong>Type:</strong> {{ details.rocket?.rocket_type }}</p>
+    </div>
+
+    <div class="details-section">
+      <h3>Launch Site</h3>
+      <p>{{ details.launch_site?.site_name_long }}</p>
+    </div>
+
+    <div class="details-section">
+      <h3>Mission Details</h3>
+      <p>{{ details.details }}</p>
+      <p><strong>Launch Success:</strong> {{ details.launch_success ? 'Yes' : 'No' }}</p>
+    </div>
+
+    <div class="links-section" *ngIf="details.links?.article_link || details.links?.wikipedia || details.links?.video_link">
+      <h3>Links</h3>
+      <div class="links-container">
+        <a *ngIf="details.links?.article_link" 
+           [href]="details.links.article_link" 
+           target="_blank" 
+           class="link-button">Article</a>
+        <a *ngIf="details.links?.wikipedia" 
+           [href]="details.links.wikipedia" 
+           target="_blank" 
+           class="link-button">Wikipedia</a>
+        <a *ngIf="details.links?.video_link" 
+           [href]="details.links.video_link" 
+           target="_blank" 
+           class="link-button">Video</a>
+      </div>
+    </div>
+  </div>
+</div>
