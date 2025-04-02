@@ -12,13 +12,13 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./missionlist.component.css']
 })
 export class MissionlistComponent implements OnInit {
-  lists: List[] = []; // Initialize empty array
+  lists: List[] = []; 
 
   constructor(private missionApi: MissionApi) {} 
 
   ngOnInit() {
     this.missionApi.getMissions().subscribe(data => {
-      this.lists = data; // Just assign the data
+      this.lists = data; 
     });
   }
 }
